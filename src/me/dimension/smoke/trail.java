@@ -42,6 +42,7 @@ public class trail extends JavaPlugin {
     public final traillistener pl = new traillistener(this);
     public final trailutil util = new trailutil(this);
 
+    @Override
     public void onEnable() {
         trail.log.log(Level.INFO, "{0} is now enabled!", lol);
         setupCommands();
@@ -99,6 +100,7 @@ public class trail extends JavaPlugin {
         this.saveConfig();
     }
 
+    @Override
     public void onDisable() {
         removeallItems(pl.allitems);
         trail.log.log(Level.INFO, "{0}is now disabled", this.lol);
@@ -130,6 +132,7 @@ public class trail extends JavaPlugin {
     public void setupCommands() {
         PluginCommand trail = getCommand("trail");
         CommandExecutor commandExecutor = new CommandExecutor() {
+            @Override
             public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
                 if (((sender instanceof Player))
                         && (args.length > 0)) {
@@ -605,11 +608,9 @@ public class trail extends JavaPlugin {
         trailuser.addAll(Arrays.asList(split));
         trailuser.remove(newskull);
         String skulls = null;
-        for (int i = 0; i < trailuser.size(); i++) {
-
-            skulls += trailuser.get(i);
+        for (String trailuser1 : trailuser) {
+            skulls += trailuser1;
             skulls += ",";
-
         }
         this.getConfig().set("Skulls." + player, skulls);
         this.saveConfig();
