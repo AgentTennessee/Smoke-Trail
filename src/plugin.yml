@@ -1,0 +1,65 @@
+name: SmokeTrail
+version: 7.3
+main: me.dimension.smoke.trail
+author: DimensioX(King Magnus)
+description: Classy trails for players that want to walk in style.
+commands:
+  trail:
+    description: Base command for all trail effects
+    aliases:
+      - trails
+permissions:
+  smoketrail.all:
+    children:
+      smoketrail.use.*: true
+      smoketrail.other.*: true
+      smoketrail.multi: true
+      
+  smoketrail.use.*:
+    children:
+      smoketrail.use.fire: true
+      smoketrail.use.smoke: true
+      smoketrail.use.ender: true
+      smoketrail.use.hearts: true
+      smoketrail.use.crit: true
+      smoketrail.use.sweat: true
+      smoketrail.use.flowers: true
+      smoketrail.use.loot: true
+      smoketrail.use.stars: true
+      smoketrail.use.disco: true
+      smoketrail.use.blood: true
+      smoketrail.use.magma: true
+      smoketrail.use.breadcrumb: true
+      smoketrail.use.letters: true
+      smoketrail.use.spark: true
+      smoketrail.use.magic: true
+      smoketrail.use.happy: true
+      smoketrail.use.music: true
+      smoketrail.use.snow: true
+      smoketrail.use.fireworks: true
+      smoketrail.use.off: true
+  smoketrail.multi:
+    default: op
+  smoketrail.other.*:
+    children:
+      smoketrail.other.fire: true
+      smoketrail.other.smoke: true
+      smoketrail.other.ender: true
+      smoketrail.other.hearts: true
+      smoketrail.other.sweat: true
+      smoketrail.other.crit: true
+      smoketrail.other.flower: true
+      smoketrail.other.loot: true
+      smoketrail.other.stars: true
+      smoketrail.other.disco: true
+      smoketrail.other.off: true
+      smoketrail.other.blood: true
+      smoketrail.other.magma: true
+      smoketrail.other.breadcrumb: true
+      smoketrail.other.letters: true
+      smoketrail.other.spark: true
+      smoketrail.other.notes: true
+      smoketrail.other.magic: true
+      smoketrail.other.snow: true
+      smoketrail.other.happy: true
+      smoketrail.other.off: true

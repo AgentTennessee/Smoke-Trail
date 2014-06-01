@@ -1,0 +1,97 @@
+Users:
+TrailValues:
+  SmokeLow: 8
+  SmokeHigh: 14 
+  FireLow: 2
+  FireHigh: 6
+  EnderLow: 90
+  EnderHigh: 160
+  CritLow: 4
+  CritHigh: 7
+  SweatLow: 4
+  SweatHigh: 8
+  HeartsLow: 2
+  HeartsHigh: 8
+  DiscoHigh: 8
+  DiscoLow: 2
+  MagmaLow: 4
+  MagmaHigh: 12
+  LetterLow: 9
+  LetterHigh: 16
+  SparkLow: 4
+  SparkHigh: 7
+  BreadLow: 4
+  BreadHigh: 8
+  BloodLow: 2
+  BloodHigh: 8
+  HappyLow: 4
+  HappyHigh: 12
+  MagicLow: 4
+  MagicHigh: 7
+  NotesLow: 4
+  NotesHigh: 8
+  SnowLow: 2
+  SnowHigh: 8
+Messages: 
+  smoke:
+    enabled: "&6[&cST&6] &7Smoke &aTrail Enabled!"
+    disabled: "&6[&cST&6] &7Smoke &cTrail Disabled!"
+  fire:
+    enabled: "&6[&cST&6] &4Fire &aTrail Enabled!"
+    disabled: "&6[&cST&6] &4Fire &cTrail Disabled!"
+  ender:
+    enabled: "&6[&cST&6] &2Ender &aTrail Enabled!"
+    disabled: "&6[&cST&6] &2Ender &cTrail Disabled!"
+  flowers:
+    enabled: "&6[&cST&6] &eFlower &aTrail Enabled!"
+    disabled: "&6[&cST&6] &eFlower &cTrail Disabled!"
+  loot:
+    enabled: "&6[&cST&6] &bLoot &aTrail Enabled!"
+    disabled: "&6[&cST&6] &bLoot &cTrail Disabled!"
+  stars:
+    enabled: "&6[&cST&6] &fStar &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fStar &cTrail Disabled!"
+  hearts:
+    enabled: "&6[&cST&6] &cHearts &aTrail Enabled!"
+    disabled: "&6[&cST&6] &cHearts &cTrail Disabled!"
+  crit:
+    enabled: "&6[&cST&6] &fCrit &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fCrit &cTrail Disabled!"
+  sweat:
+    enabled: "&6[&cST&6] &fSweat &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fSweat &cTrail Disabled!"
+  disco:
+    enabled: "&6[&cST&6] &fDisco &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fDisco &cTrail Disabled!"
+  blood:
+    enabled: "&6[&cST&6] &cBlood &aTrail Enabled!"
+    disabled: "&6[&cST&6] &cBlood &cTrail Disabled!"
+  sparks:
+    enabled: "&6[&cST&6] &fSpark &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fSpark &cTrail Disabled!"
+  breadcrumb:
+    enabled: "&6[&cST&6] &fBread Crumb &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fBread Crumb &cTrail Disabled!"
+  magma:
+    enabled: "&6[&cST&6] &6Magma &aTrail Enabled!"
+    disabled: "&6[&cST&6] &6Magma &cTrail Disabled!"
+  letters:
+    enabled: "&6[&cST&6] &0Letters &aTrail Enabled!"
+    disabled: "&6[&cST&6] &0Letters &cTrail Disabled!"
+  fireworks:
+    enabled: "&6[&cST&6] &4Fireworks &aTrail Enabled!"
+    disabled: "&6[&cST&6] &4Fireworks &cTrail Disabled!"
+  snow:
+    enabled: "&6[&cST&6] &fSnow &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fSnow &cTrail Disabled!"
+  happy:
+    enabled: "&6[&cST&6] &eHappy &aTrail Enabled!"
+    disabled: "&6[&cST&6] &eHappy &cTrail Disabled!"
+  magic:
+    enabled: "&6[&cST&6] &fMagic &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fMagic &cTrail Disabled!"
+  music:
+    enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
+
+
