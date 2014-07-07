@@ -93,5 +93,4 @@ Messages:
   music:
     enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
     disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
-
-
+  off: "&6[&cST&6] &cTrail(s) disabled!"
