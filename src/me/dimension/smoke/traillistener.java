@@ -138,6 +138,13 @@ public class traillistener
                 removed.remove();
             }
         }
+        
+        if(plugin.getConfig().getBoolean("DisableOnLeave")==true){
+            if(plugin.getConfig().contains("Users"+ event.getPlayer().getName())){
+                plugin.getConfig().set("Users."+event.getPlayer().getName(),null);
+            }
+        }
+           
     }
 
     @EventHandler

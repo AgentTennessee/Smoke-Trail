@@ -446,8 +446,7 @@ public class trail extends JavaPlugin {
                         this.skulllist.remove(player.getName());
                         this.getConfig().set("Users." + player.getName(), null);
                         this.saveConfig();
-                        player.sendMessage(this.lol + "Your trail is now off!");
-
+                        player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.off")));
                     } else {
                         player.sendMessage("This player is not using a trail.");
                     }
