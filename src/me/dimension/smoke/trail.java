@@ -62,7 +62,10 @@ public class trail extends JavaPlugin {
             this.saveConfig();
                     
         }
-
+        if(!this.getConfig().contains("DisableOnLeave")){
+            this.getConfig().set("DisableOnLeave", false);
+            this.saveConfig();
+        }
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
