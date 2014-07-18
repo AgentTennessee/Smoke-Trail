@@ -1,3 +1,4 @@
+DisableOnLeave: False
 Users:
 TrailValues:
   SmokeLow: 8
