@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
@@ -52,17 +53,17 @@ public class trail extends JavaPlugin {
         this.saveResource("config.yml", false);
         this.getConfig();
         this.reloadConfig();
-        if(this.getConfig().contains("Messages.breadcrumb")){
+        if (this.getConfig().contains("Messages.breadcrumb")) {
             String fix = this.getConfig().getString("Messages.breadcrumb.enabled");
             String fix2 = this.getConfig().getString("Messages.breadcrumb.disabled");
             this.getConfig().set("Messages.breadcrumb.enabled", null);
-            this.getConfig().set("Messages.breadcrumb.disabled",null);
+            this.getConfig().set("Messages.breadcrumb.disabled", null);
             this.getConfig().set("Messages.breadcrumbs.enabled", fix);
-            this.getConfig().set("Messages.breadcrumbs.disabled",fix2);
+            this.getConfig().set("Messages.breadcrumbs.disabled", fix2);
             this.saveConfig();
-                    
+
         }
-        if(!this.getConfig().contains("DisableOnLeave")){
+        if (!this.getConfig().contains("DisableOnLeave")) {
             this.getConfig().set("DisableOnLeave", false);
             this.saveConfig();
         }
@@ -73,8 +74,6 @@ public class trail extends JavaPlugin {
         } catch (IOException e) {
             // Failed to submit the stats :-(
         }
-
-
 
         if (this.getConfig().getConfigurationSection("Users") == null) {
         } else {
@@ -286,55 +285,54 @@ public class trail extends JavaPlugin {
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
-        }  else if (args[0].equalsIgnoreCase("ender")) {
+        } else if (args[0].equalsIgnoreCase("ender")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.ender"))) {
-                
-                    switchTrails(player.getName(), "ender");
-               
+
+                switchTrails(player.getName(), "ender");
+
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.ender"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                
-                    switchTrails(player2.getName(), "ender");
-               
+
+                switchTrails(player2.getName(), "ender");
+
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
         } else if (args[0].equalsIgnoreCase("blood")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.blood"))) {
-              
-                    switchTrails(player.getName(), "blood");
-              
+
+                switchTrails(player.getName(), "blood");
+
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.blood"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-               
-                    switchTrails(player2.getName(), "blood");
-               
+
+                switchTrails(player2.getName(), "blood");
+
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
         } else if (args[0].equalsIgnoreCase("sweat")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.sweat"))) {
-               
-                    switchTrails(player.getName(), "sweat");
-                
+
+                switchTrails(player.getName(), "sweat");
+
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.sweat"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                
-                    switchTrails(player2.getName(), "sweat");
-               
+
+                switchTrails(player2.getName(), "sweat");
+
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
         } else if (args[0].equalsIgnoreCase("hearts")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.hearts"))) {
-               
-                    switchTrails(player.getName(), "hearts");
+
+                switchTrails(player.getName(), "hearts");
 
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.hearts"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                
-                    switchTrails(player2.getName(), "hearts");
 
+                switchTrails(player2.getName(), "hearts");
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
@@ -346,7 +344,6 @@ public class trail extends JavaPlugin {
                 } else {
                     switchTrails(player.getName(), "crit");
                 }
-
 
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.crit"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
@@ -361,14 +358,13 @@ public class trail extends JavaPlugin {
 
         } else if (args[0].equalsIgnoreCase("smoke")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.smoke"))) {
-               
-                    switchTrails(player.getName(), "smoke");
 
+                switchTrails(player.getName(), "smoke");
 
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.smoke"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-               
-                    switchTrails(player2.getName(), "smoke");
+
+                switchTrails(player2.getName(), "smoke");
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
@@ -376,33 +372,27 @@ public class trail extends JavaPlugin {
 
         } else if (args[0].equalsIgnoreCase("flowers")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.flowers"))) {
-            
-                    switchTrails(player.getName(), "flowers");
 
+                switchTrails(player.getName(), "flowers");
 
-               
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.flowers"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                
-                    switchTrails(player2.getName(), "flowers");
 
-                
+                switchTrails(player2.getName(), "flowers");
+
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
 
         } else if (args[0].equalsIgnoreCase("loot")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.loot"))) {
-               
-       
-                    switchTrails(player.getName(), "loot");
 
-                
+                switchTrails(player.getName(), "loot");
+
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.loot"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                
-                    switchTrails(player2.getName(), "loot");
 
+                switchTrails(player2.getName(), "loot");
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
@@ -421,12 +411,10 @@ public class trail extends JavaPlugin {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
 
-
         } else if (args[0].equalsIgnoreCase("music")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.music"))) {
                 if (this.modelist.containsKey(player.getName())) {
                     switchTrails(player.getName(), "music");
-
 
                 } else {
                     switchTrails(player.getName(), "music");
@@ -434,10 +422,9 @@ public class trail extends JavaPlugin {
                 }
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.music"))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-               
-                    switchTrails(player2.getName(), "music");
 
-               
+                switchTrails(player2.getName(), "music");
+
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
@@ -479,7 +466,6 @@ public class trail extends JavaPlugin {
                 result += comma;
             }
 
-
             player.sendMessage(ChatColor.BLUE + result);
         } else if (args[0].equalsIgnoreCase("multi")) {
             if (player.hasPermission("smoketrail.multi")) {
@@ -489,7 +475,8 @@ public class trail extends JavaPlugin {
                     } else {
                         this.modelist.put(player.getName(), new ArrayList<String>());
                     }
-                    String trailstoggled = "";
+                    List<String> trailstoggled = new ArrayList<String>();
+                   
                     Boolean invalid = false;
                     if (this.getConfig().contains("Users." + player.getName())) {
                         this.getConfig().set("Users." + player.getName(), null);
@@ -502,8 +489,9 @@ public class trail extends JavaPlugin {
                             if (player.hasPermission("trails.use." + args[i])) {
                                 this.modelist.get(player.getName()).add(args[i]);
                                 this.getConfig().set("Users." + player, this.getConfig().get("Users." + player.getName()) + "," + args[i]);
-                                trailstoggled += args[i] += " ";
+                                trailstoggled.add(args[i]);
                                 this.saveConfig();
+                                
                             }
                         } else {
                             if (invalid = false) {
@@ -512,8 +500,8 @@ public class trail extends JavaPlugin {
                             }
                         }
                     }
-                    if (trailstoggled.length() > 1) {
-                        player.sendMessage(ChatColor.GREEN + Multi + ChatColor.BLUE + "Trails enabled: " + trailstoggled);
+                    if (trailstoggled.size() > 1) {
+                        player.sendMessage(ChatColor.GREEN + Multi + ChatColor.BLUE + "Trails enabled: " + trailstoggled.toString());
                     }
                 } else {
                     player.sendMessage(this.Red + "You need to supply trails to use.");
@@ -525,7 +513,6 @@ public class trail extends JavaPlugin {
             player.sendMessage(ChatColor.RED + "That command is not recognized");
         }
 
-
     }
 
     //Remove every item spawned by the plugin
@@ -535,8 +522,6 @@ public class trail extends JavaPlugin {
             Entity next = i.next();
             next.remove();
         }
-
-
 
     }
     //Remove every item spawned by the player associated
@@ -580,8 +565,7 @@ public class trail extends JavaPlugin {
                 this.reloadConfig();
                 Bukkit.getPlayer(player).sendMessage(trailutil.colorize(this.getConfig().getString("Messages." + newtrail + ".disabled")));
                 removeplayerItems(pl.diamonds, pl.flower, pl.stars, pl.skulls, Bukkit.getPlayer(player));
-                
-                
+
                 this.getConfig().set("Users." + player, null);
                 this.saveConfig();
             } else {
