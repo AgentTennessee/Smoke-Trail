@@ -69,6 +69,7 @@ public class trail extends JavaPlugin {
         }
         if(!this.getConfig().contains("Messages.off")){
             this.getConfig().set("Messages.off","&6[&cST&6] &cTrail(s) disabled!");
+            this.saveConfig();
         }
         try {
             Metrics metrics = new Metrics(this);

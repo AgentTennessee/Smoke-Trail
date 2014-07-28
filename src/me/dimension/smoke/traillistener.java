@@ -58,8 +58,6 @@ public class traillistener
             event.setCancelled(true);
         }
 
-
-
     }
 
     @EventHandler
@@ -88,14 +86,16 @@ public class traillistener
         }
 
     }
- public void EntityDeathEvent(EntityDeathEvent event){
-   List<ItemStack> drops = event.getDrops();
-   for(int i = 0;i< drops.size(); i++){
-      if(allitemstacks.contains(drops.get(i))){
-          drops.get(i).setAmount(0);
-      }
-   }
- }
+
+    public void EntityDeathEvent(EntityDeathEvent event) {
+        List<ItemStack> drops = event.getDrops();
+        for (int i = 0; i < drops.size(); i++) {
+            if (allitemstacks.contains(drops.get(i))) {
+                drops.get(i).setAmount(0);
+            }
+        }
+    }
+
     @EventHandler
     public void onEntityPortal(EntityPortalEnterEvent event) {
         Entity newitem = event.getEntity();
@@ -138,13 +138,13 @@ public class traillistener
                 removed.remove();
             }
         }
-        
-        if(plugin.getConfig().getBoolean("DisableOnLeave")==true){
-            if(plugin.getConfig().contains("Users"+ event.getPlayer().getName())){
-                plugin.getConfig().set("Users."+event.getPlayer().getName(),null);
+
+        if (plugin.getConfig().getBoolean("DisableOnLeave") == true) {
+            if (plugin.getConfig().contains("Users" + event.getPlayer().getName())) {
+                plugin.getConfig().set("Users." + event.getPlayer().getName(), null);
             }
         }
-           
+
     }
 
     @EventHandler
@@ -204,8 +204,6 @@ public class traillistener
         int HappyHigh = plugin.getConfig().getInt("TrailValues.HappyHigh");
         int HappyLow = plugin.getConfig().getInt("TrailValues.HappyLow");
 
-
-
         if ((plugin.modelist.containsKey(event.getPlayer().getName())) && ((plugin.modelist.get(event.getPlayer().getName())).contains("fire"))) {
             if (!trailNegative(FireHigh, FireLow)) {
                 Random random = new Random();
@@ -225,7 +223,6 @@ public class traillistener
             ParticleEffect.NOTE.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((10 - 4) + 4) + 1);
 
         }
-
 
         if ((plugin.modelist.containsKey(event.getPlayer().getName())) && ((plugin.modelist.get(event.getPlayer().getName())).contains("ender"))) {
             if (!trailNegative(EnderHigh, EnderLow)) {
@@ -284,7 +281,7 @@ public class traillistener
                 Random flowerdrop = new Random();
                 int newflower = flowerdrop.nextInt(flowerlist.length);
                 Entity nextflower = world.dropItem(event.getFrom(), flowerlist[newflower]);
-                
+
                 this.flower.get(sender).add(nextflower);
                 allitems.add(nextflower);
                 allitemstacks.add(flowerlist[newflower]);
@@ -296,8 +293,8 @@ public class traillistener
                             Item next1 = (Item) alpha.next();
                             traillistener.this.flower.get(sender).remove(next1);
                             allitems.remove(next1);
-                            if(allitemstacks.contains(next1.getItemStack())){
-                            allitemstacks.remove(next1.getItemStack());
+                            if (allitemstacks.contains(next1.getItemStack())) {
+                                allitemstacks.remove(next1.getItemStack());
                             }
                             next1.remove();
                         } else {
@@ -346,8 +343,8 @@ public class traillistener
                             Item next1 = (Item) alpha.next();
                             traillistener.this.diamonds.get(sender).remove(next1);
                             allitems.remove(next1);
-                            if(allitemstacks.contains(next1.getItemStack())){
-                            allitemstacks.remove(next1.getItemStack());
+                            if (allitemstacks.contains(next1.getItemStack())) {
+                                allitemstacks.remove(next1.getItemStack());
                             }
                             next1.remove();
                         } else {
@@ -497,8 +494,8 @@ public class traillistener
                             Item next1 = (Item) alpha.next();
                             traillistener.this.stars.get(sender).remove(next1);
                             allitems.remove(next1);
-                            if(allitemstacks.contains(next1.getItemStack())){
-                            allitemstacks.remove(next1.getItemStack());
+                            if (allitemstacks.contains(next1.getItemStack())) {
+                                allitemstacks.remove(next1.getItemStack());
                             }
                             next1.remove();
                         } else {
@@ -510,10 +507,7 @@ public class traillistener
                 stars.put(sender, new ArrayList<Entity>());
             }
 
-
-
             //Removes the diamonds
-
         }
 
         if ((plugin.modelist.containsKey(event.getPlayer().getName())) && ((plugin.modelist.get(event.getPlayer().getName())).contains("fireworks"))) {
@@ -575,7 +569,6 @@ public class traillistener
         }
     }
 
-   
     private Color getColor(int i) {
         Color c = null;
         if (i == 1) {
