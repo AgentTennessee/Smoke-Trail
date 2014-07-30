@@ -142,6 +142,7 @@ public class traillistener
         if (plugin.getConfig().getBoolean("DisableOnLeave") == true) {
             if (plugin.getConfig().contains("Users" + event.getPlayer().getName())) {
                 plugin.getConfig().set("Users." + event.getPlayer().getName(), null);
+                plugin.modelist.remove(event.getPlayer().getName());
             }
         }
 
@@ -549,7 +550,7 @@ public class traillistener
             fwm.addEffect(effect);
 
             //Generate some random power and set it
-            int rp = r.nextInt(2) + 1;
+            int rp = 1;
             fwm.setPower(rp);
 
             //Then apply this to our rocket
