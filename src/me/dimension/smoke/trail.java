@@ -67,8 +67,8 @@ public class trail extends JavaPlugin {
             this.getConfig().set("DisableOnLeave", false);
             this.saveConfig();
         }
-        if(!this.getConfig().contains("Messages.off")){
-            this.getConfig().set("Messages.off","&6[&cST&6] &cTrail(s) disabled!");
+        if (!this.getConfig().contains("Messages.off")) {
+            this.getConfig().set("Messages.off", "&6[&cST&6] &cTrail(s) disabled!");
             this.saveConfig();
         }
         try {
@@ -466,11 +466,24 @@ public class trail extends JavaPlugin {
             String result = "";
             String comma = ", ";
             for (String s : trails) {
-                result += s;
-                result += comma;
+                if (s.equalsIgnoreCase("multi")) {
+                    if (player.hasPermission("smoketrail.multi")) {
+                        result += ChatColor.BLUE +s;
+                    } else {
+                        result += ChatColor.RED +s;
+                    }
+                } else {
+                    if (player.hasPermission("smoketrail.use." + s)) {
+                        result += ChatColor.BLUE + s;
+                    } else {
+                        result += ChatColor.RED + s;
+                    }
+
+                }
+                result += ChatColor.WHITE +comma;
             }
 
-            player.sendMessage(ChatColor.BLUE + result);
+            player.sendMessage(result);
         } else if (args[0].equalsIgnoreCase("multi")) {
             if (player.hasPermission("smoketrail.multi")) {
                 if (args.length > 1) {
@@ -480,7 +493,7 @@ public class trail extends JavaPlugin {
                         this.modelist.put(player.getName(), new ArrayList<String>());
                     }
                     List<String> trailstoggled = new ArrayList<String>();
-                   
+
                     Boolean invalid = false;
                     if (this.getConfig().contains("Users." + player.getName())) {
                         this.getConfig().set("Users." + player.getName(), null);
@@ -495,7 +508,7 @@ public class trail extends JavaPlugin {
                                 this.getConfig().set("Users." + player, this.getConfig().get("Users." + player.getName()) + "," + args[i]);
                                 trailstoggled.add(args[i]);
                                 this.saveConfig();
-                                
+
                             }
                         } else {
                             if (invalid = false) {
