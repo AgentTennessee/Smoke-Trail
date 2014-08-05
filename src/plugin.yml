@@ -1,5 +1,5 @@
 name: SmokeTrail
-version: 7.6
+version: 7.8
 main: me.dimension.smoke.trail
 author: DimensioX(King Magnus)
 description: Classy trails for players that want to walk in style.
@@ -31,7 +31,7 @@ permissions:
       smoketrail.use.magma: true
       smoketrail.use.breadcrumb: true
       smoketrail.use.letters: true
-      smoketrail.use.spark: true
+      smoketrail.use.sparks: true
       smoketrail.use.magic: true
       smoketrail.use.happy: true
       smoketrail.use.music: true
