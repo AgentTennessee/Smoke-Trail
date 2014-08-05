@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static me.dimension.smoke.traillistener.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -33,7 +34,7 @@ public class trail extends JavaPlugin {
      public String Custom2 = "[Custom Trail 2] ";
      public String Custom3 = "[Custom Trail 3] ";
      public String Dynamic = "[Dyna Trail] "; */
-    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "star", "hearts", "crit", "sweat", "disco", "blood", "sparks", "breadcrumbs", "magma", "letters", "fireworks", "snow", "happy", "magic", "music", "multi"};
+    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "fireworks", "snow", "happy", "magic", "music", "multi"};
     public ChatColor Red = ChatColor.RED;
     public ChatColor Blue = ChatColor.BLUE;
     public String on = "is now on";
@@ -160,19 +161,77 @@ public class trail extends JavaPlugin {
 
     public void commandHandler(Player player, String[] args) {
         //Allow the player/player chosen from argument to use any of the trails based off of what they chose in their command
-        if (args[0].equalsIgnoreCase("fire")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.fire"))) {
+        if(Arrays.asList(trails).contains(args[0])){
+            if ((args.length == 1) && (player.hasPermission("smoketrail.use."+args[0]))) {
 
-                switchTrails(player.getName(), "fire");
+                switchTrails(player.getName(), args[0]);
 
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.fire"))) {
+            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other."+args[0]))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
 
-                switchTrails(player2.getName(), "fire");
+                switchTrails(player2.getName(), args[0]);
+                player.sendMessage(trailutil.colorize(on));
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
+        } else if(args[0].equalsIgnoreCase("off")){
+            
+        } else if(args[0].equalsIgnoreCase("multi")){
+            
+        } else if(args[0].equalsIgnoreCase("reload")){
+            if(player.hasPermission("smoketrail.reload")){
+                this.reloadConfig();
+             pl.FireLow = getConfig().getInt("TrailValues.FireLow");
+        pl.FireHigh = getConfig().getInt("TrailValues.FireHigh");
+
+        pl.SmokeLow = getConfig().getInt("TrailValues.SmokeLow");
+        pl.SmokeHigh = getConfig().getInt("TrailValues.SmokeHigh");
+
+        pl.HeartLow = getConfig().getInt("TrailValues.HeartLow");
+        pl.HeartHigh = getConfig().getInt("TrailValues.HeartsHigh");
+
+        pl.EnderHigh = getConfig().getInt("TrailValues.EnderHigh");
+        pl.EnderLow = getConfig().getInt("TrailValues.EnderLow");
+
+        pl.CritHigh = getConfig().getInt("TrailValues.CritHigh");
+        pl.CritLow = getConfig().getInt("TrailValues.CritLow");
+
+        pl.SweatHigh = getConfig().getInt("TrailValues.SweatHigh");
+        pl.SweatLow = getConfig().getInt("TrailValues.SweatLow");
+
+        pl.DiscoHigh = getConfig().getInt("TrailValues.DiscoHigh");
+        pl.DiscoLow = getConfig().getInt("TrailValues.DiscoLow");
+
+        pl.MagmaHigh = getConfig().getInt("TrailValues.MagmaHigh");
+        pl.MagmaLow = getConfig().getInt("TrailValues.MagmaLow");
+
+        pl.LetterHigh = getConfig().getInt("TrailValues.LetterHigh");
+        pl.LetterLow = getConfig().getInt("TrailValues.LetterLow");
+
+        pl.SparkHigh = getConfig().getInt("TrailValues.SparkHigh");
+        pl.SparkLow = getConfig().getInt("TrailValues.SparkLow");
+
+        pl.BreadHigh = getConfig().getInt("TrailValues.BreadHigh");
+        pl.BreadLow = getConfig().getInt("TrailValues.BreadLow");
+
+        pl.BloodHigh = getConfig().getInt("TrailValues.BloodHigh");
+        pl.BloodLow = getConfig().getInt("TrailValues.BloodLow");
+
+        pl.MagicHigh = getConfig().getInt("TrailValues.MagicHigh");
+        pl.MagicLow = getConfig().getInt("TrailValues.MagicLow");
+
+        pl.SnowHigh = getConfig().getInt("TrailValues.SnowHigh");
+        pl.SnowLow = getConfig().getInt("TrailValues.SnowLow");
+
+        pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
+        pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
+            } else {
+                player.sendMessage(ChatColor.RED + "You don't have permission to use this command");
+            }
+        }
+        if (args[0].equalsIgnoreCase("fire")) {
+            
         } else if (args[0].equalsIgnoreCase("disco")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.disco"))) {
 
@@ -212,7 +271,7 @@ public class trail extends JavaPlugin {
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
-        } else if (args[0].equalsIgnoreCase("breadcrumbs")) {
+        } else if (args[0].equalsIgnoreCase("breadcrumb")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.breadcrumb"))) {
 
                 switchTrails(player.getName(), "breadcrumbs");
