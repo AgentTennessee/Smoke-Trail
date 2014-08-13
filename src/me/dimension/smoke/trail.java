@@ -10,7 +10,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static me.dimension.smoke.traillistener.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -91,20 +90,7 @@ public class trail extends JavaPlugin {
                 modelist.put(str, trailuser);
             }
         }
-        /*if (this.getConfig().getConfigurationSection("Skulls") == null) {
-         } else {
-         for (String str : this.getConfig().getConfigurationSection("Skulls").getKeys(false)) {
-
-         String p = this.getConfig().getString("Skulls." + str);
-         String[] split = p.split(",");
-         ArrayList<String> userskulls = new ArrayList<String>();
-         userskulls.addAll(Arrays.asList(split));
-         skulllist.put(str, userskulls);
-         }
-         }
-         */
-
-        this.saveConfig();
+     this.saveConfig();
     }
 
     @Override
@@ -121,18 +107,6 @@ public class trail extends JavaPlugin {
                 this.getConfig().set("Users." + pointstostore.getKey(), skulls);
             }
         }
-        /* for (Entry<String, ArrayList<String>> pointstostore : skulllist.entrySet()) {
-         String skulls = null;
-         for (int i = 0; i < pointstostore.getValue().size(); i++) {
-                
-         skulls += pointstostore.getValue().get(i);
-         skulls += ",";
-                
-         }
-         this.getConfig().set("Skulls." + pointstostore.getKey(), skulls);
-
-         }*/
-
     }
 
     //Make commands work
