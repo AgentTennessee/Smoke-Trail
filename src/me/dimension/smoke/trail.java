@@ -144,7 +144,7 @@ public class trail extends JavaPlugin {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
 
                 switchTrails(player2.getName(), args[0]);
-                player.sendMessage(trailutil.colorize(on));
+                player.sendMessage(ChatColor.GREEN + "Trail toggled for" + player2.getName());
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
