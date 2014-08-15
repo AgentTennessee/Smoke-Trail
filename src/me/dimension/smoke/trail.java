@@ -48,11 +48,11 @@ public class trail extends JavaPlugin {
         trail.log.log(Level.INFO, "{0} is now enabled!", lol);
         setupCommands();
         PluginManager pm = getServer().getPluginManager();
-        pm.registerEvents(pl, this);
-
         this.saveResource("config.yml", false);
         this.getConfig();
-        this.reloadConfig();
+        this.reloadConfig(); 
+        loadValues();
+        pm.registerEvents(pl, this);
         if (this.getConfig().contains("Messages.breadcrumb")) {
             String fix = this.getConfig().getString("Messages.breadcrumb.enabled");
             String fix2 = this.getConfig().getString("Messages.breadcrumb.disabled");
@@ -182,50 +182,7 @@ public class trail extends JavaPlugin {
         }else if(args[0].equalsIgnoreCase("reload")){
             if(player.hasPermission("smoketrail.reload")){
                 this.reloadConfig();
-             pl.FireLow = getConfig().getInt("TrailValues.FireLow");
-        pl.FireHigh = getConfig().getInt("TrailValues.FireHigh");
-
-        pl.SmokeLow = getConfig().getInt("TrailValues.SmokeLow");
-        pl.SmokeHigh = getConfig().getInt("TrailValues.SmokeHigh");
-
-        pl.HeartLow = getConfig().getInt("TrailValues.HeartLow");
-        pl.HeartHigh = getConfig().getInt("TrailValues.HeartsHigh");
-
-        pl.EnderHigh = getConfig().getInt("TrailValues.EnderHigh");
-        pl.EnderLow = getConfig().getInt("TrailValues.EnderLow");
-
-        pl.CritHigh = getConfig().getInt("TrailValues.CritHigh");
-        pl.CritLow = getConfig().getInt("TrailValues.CritLow");
-
-        pl.SweatHigh = getConfig().getInt("TrailValues.SweatHigh");
-        pl.SweatLow = getConfig().getInt("TrailValues.SweatLow");
-
-        pl.DiscoHigh = getConfig().getInt("TrailValues.DiscoHigh");
-        pl.DiscoLow = getConfig().getInt("TrailValues.DiscoLow");
-
-        pl.MagmaHigh = getConfig().getInt("TrailValues.MagmaHigh");
-        pl.MagmaLow = getConfig().getInt("TrailValues.MagmaLow");
-
-        pl.LetterHigh = getConfig().getInt("TrailValues.LetterHigh");
-        pl.LetterLow = getConfig().getInt("TrailValues.LetterLow");
-
-        pl.SparkHigh = getConfig().getInt("TrailValues.SparkHigh");
-        pl.SparkLow = getConfig().getInt("TrailValues.SparkLow");
-
-        pl.BreadHigh = getConfig().getInt("TrailValues.BreadHigh");
-        pl.BreadLow = getConfig().getInt("TrailValues.BreadLow");
-
-        pl.BloodHigh = getConfig().getInt("TrailValues.BloodHigh");
-        pl.BloodLow = getConfig().getInt("TrailValues.BloodLow");
-
-        pl.MagicHigh = getConfig().getInt("TrailValues.MagicHigh");
-        pl.MagicLow = getConfig().getInt("TrailValues.MagicLow");
-
-        pl.SnowHigh = getConfig().getInt("TrailValues.SnowHigh");
-        pl.SnowLow = getConfig().getInt("TrailValues.SnowLow");
-
-        pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
-        pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
+             loadValues();
             } else {
                 player.sendMessage(ChatColor.RED + "You don't have permission to use this command");
             }
@@ -395,6 +352,53 @@ public class trail extends JavaPlugin {
         this.getConfig().set("Skulls." + player, this.getConfig().get("Skulls" + player) + "," + newskull);
         this.saveConfig();
 
+    }
+    public void loadValues(){
+        pl.FireLow = getConfig().getInt("TrailValues.FireLow");
+        pl.FireHigh = getConfig().getInt("TrailValues.FireHigh");
+
+        pl.SmokeLow = getConfig().getInt("TrailValues.SmokeLow");
+        pl.SmokeHigh = getConfig().getInt("TrailValues.SmokeHigh");
+
+        pl.HeartLow = getConfig().getInt("TrailValues.HeartLow");
+        pl.HeartHigh = getConfig().getInt("TrailValues.HeartsHigh");
+
+        pl.EnderHigh = getConfig().getInt("TrailValues.EnderHigh");
+        pl.EnderLow = getConfig().getInt("TrailValues.EnderLow");
+
+        pl.CritHigh = getConfig().getInt("TrailValues.CritHigh");
+        pl.CritLow = getConfig().getInt("TrailValues.CritLow");
+
+        pl.SweatHigh = getConfig().getInt("TrailValues.SweatHigh");
+        pl.SweatLow = getConfig().getInt("TrailValues.SweatLow");
+
+        pl.DiscoHigh = getConfig().getInt("TrailValues.DiscoHigh");
+        pl.DiscoLow = getConfig().getInt("TrailValues.DiscoLow");
+
+        pl.MagmaHigh = getConfig().getInt("TrailValues.MagmaHigh");
+        pl.MagmaLow = getConfig().getInt("TrailValues.MagmaLow");
+
+        pl.LetterHigh = getConfig().getInt("TrailValues.LetterHigh");
+        pl.LetterLow = getConfig().getInt("TrailValues.LetterLow");
+
+        pl.SparkHigh = getConfig().getInt("TrailValues.SparkHigh");
+        pl.SparkLow = getConfig().getInt("TrailValues.SparkLow");
+
+        pl.BreadHigh = getConfig().getInt("TrailValues.BreadHigh");
+        pl.BreadLow = getConfig().getInt("TrailValues.BreadLow");
+
+        pl.BloodHigh = getConfig().getInt("TrailValues.BloodHigh");
+        pl.BloodLow = getConfig().getInt("TrailValues.BloodLow");
+
+        pl.MagicHigh = getConfig().getInt("TrailValues.MagicHigh");
+        pl.MagicLow = getConfig().getInt("TrailValues.MagicLow");
+
+        pl.SnowHigh = getConfig().getInt("TrailValues.SnowHigh");
+        pl.SnowLow = getConfig().getInt("TrailValues.SnowLow");
+
+        pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
+        pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
+        
     }
     /* public void reloadConfig() {
      if (this.getConfig()File == null) {
