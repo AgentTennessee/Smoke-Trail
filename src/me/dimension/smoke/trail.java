@@ -135,7 +135,7 @@ public class trail extends JavaPlugin {
 
     public void commandHandler(Player player, String[] args) {
         //Allow the player/player chosen from argument to use any of the trails based off of what they chose in their command
-        if(Arrays.asList(trails).contains(args[0])){
+        if(Arrays.asList(trails).contains(args[0]) && !args[0].equalsIgnoreCase("multi")){
             if ((args.length == 1) && (player.hasPermission("smoketrail.use."+args[0]))) {
 
                 switchTrails(player.getName(), args[0]);
