@@ -45,6 +45,11 @@ public class traillistener
     Random random1 = new Random();
     HashMap<UUID, Integer> IDtoTaskID = new HashMap<UUID, Integer>();
     public static final Logger log = Logger.getLogger("Minecraft");
+    
+
+    public traillistener(trail instance) {
+        plugin = instance;
+    }
     public int FireLow = plugin.getConfig().getInt("TrailValues.FireLow");
     public int FireHigh = plugin.getConfig().getInt("TrailValues.FireHigh");
     public int SmokeLow = plugin.getConfig().getInt("TrailValues.SmokeLow");
@@ -75,11 +80,6 @@ public class traillistener
     public int SnowLow = plugin.getConfig().getInt("TrailValues.SnowLow");
     public int HappyHigh = plugin.getConfig().getInt("TrailValues.HappyHigh");
     public int HappyLow = plugin.getConfig().getInt("TrailValues.HappyLow");
-
-    public traillistener(trail instance) {
-        plugin = instance;
-    }
-
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
         Entity newitem = event.getItem();
