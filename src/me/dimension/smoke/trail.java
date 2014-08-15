@@ -150,10 +150,36 @@ public class trail extends JavaPlugin {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
         } else if(args[0].equalsIgnoreCase("off")){
+            if ((args.length == 1) && (player.hasPermission("smoketrail.use.off"))) {
+                if (this.modelist.containsKey(player.getName())) {
+                    if (this.modelist.containsKey(player.getName())) {
+                        this.modelist.remove(player.getName());
+                        this.skulllist.remove(player.getName());
+                        this.getConfig().set("Users." + player.getName(), null);
+                        this.saveConfig();
+                        player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.off")));
+                    } else {
+                        player.sendMessage("This player is not using a trail.");
+                    }
+                } else {
+                    player.sendMessage("You need to have a trail on in order to turn it off.");
+
+                }
+            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.off"))) {
+                Player player2 = Bukkit.getServer().getPlayer(args[1]);
+                if (this.modelist.containsKey(player2.getName())) {
+                    this.modelist.remove(player2.getName());
+                    this.skulllist.remove(player2.getName());
+                    player2.sendMessage(this.lol + "Your trail(s) is now off!");
+
+                } else {
+                    player.sendMessage("This player is not using a trail.");
+                }
+            } else {
+                player.sendMessage(this.Red + "You don't have permission to do this");
+            }
             
-        } else if(args[0].equalsIgnoreCase("multi")){
-            
-        } else if(args[0].equalsIgnoreCase("reload")){
+        }else if(args[0].equalsIgnoreCase("reload")){
             if(player.hasPermission("smoketrail.reload")){
                 this.reloadConfig();
              pl.FireLow = getConfig().getInt("TrailValues.FireLow");
@@ -203,299 +229,7 @@ public class trail extends JavaPlugin {
             } else {
                 player.sendMessage(ChatColor.RED + "You don't have permission to use this command");
             }
-        }
-        if (args[0].equalsIgnoreCase("fire")) {
-            
-        } else if (args[0].equalsIgnoreCase("disco")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.disco"))) {
-
-                switchTrails(player.getName(), "disco");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.disco"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "disco");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("sparks")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.sparks"))) {
-
-                switchTrails(player.getName(), "sparks");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.sparks"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "sparks");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("magma")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.magma"))) {
-
-                switchTrails(player.getName(), "magma");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.magma"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "magma");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("breadcrumb")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.breadcrumb"))) {
-
-                switchTrails(player.getName(), "breadcrumbs");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.breadcrumb"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                switchTrails(player2.getName(), "breadcrumbs");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("letters")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.letters"))) {
-
-                switchTrails(player.getName(), "letters");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.letters"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "letters");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("happy")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.happy"))) {
-
-                switchTrails(player.getName(), "happy");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.happy"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "happy");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("fireworks")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.fireworks"))) {
-
-                switchTrails(player.getName(), "fireworks");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.fireworks"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "fireworks");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("snow")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.snow"))) {
-
-                switchTrails(player.getName(), "snow");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.snow"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "snow");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("magic")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.magic"))) {
-
-                switchTrails(player.getName(), "magic");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.magic"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "magic");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("ender")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.ender"))) {
-
-                switchTrails(player.getName(), "ender");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.ender"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "ender");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("blood")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.blood"))) {
-
-                switchTrails(player.getName(), "blood");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.blood"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "blood");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("sweat")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.sweat"))) {
-
-                switchTrails(player.getName(), "sweat");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.sweat"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "sweat");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("hearts")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.hearts"))) {
-
-                switchTrails(player.getName(), "hearts");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.hearts"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "hearts");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("crit")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.crit"))) {
-                if (this.modelist.containsKey(player.getName())) {
-                    switchTrails(player.getName(), "crit");
-                } else {
-                    switchTrails(player.getName(), "crit");
-                }
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.crit"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                if (this.modelist.containsKey(player2.getName())) {
-                    switchTrails(player2.getName(), "crit");
-                } else {
-                    switchTrails(player2.getName(), "crit");
-                }
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-
-        } else if (args[0].equalsIgnoreCase("smoke")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.smoke"))) {
-
-                switchTrails(player.getName(), "smoke");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.smoke"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "smoke");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-
-        } else if (args[0].equalsIgnoreCase("flowers")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.flowers"))) {
-
-                switchTrails(player.getName(), "flowers");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.flowers"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "flowers");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-
-        } else if (args[0].equalsIgnoreCase("loot")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.loot"))) {
-
-                switchTrails(player.getName(), "loot");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.loot"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "loot");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("stars")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.stars"))) {
-
-                switchTrails(player.getName(), "stars");
-
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.stars"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "stars");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-
-        } else if (args[0].equalsIgnoreCase("music")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.music"))) {
-                if (this.modelist.containsKey(player.getName())) {
-                    switchTrails(player.getName(), "music");
-
-                } else {
-                    switchTrails(player.getName(), "music");
-
-                }
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.music"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), "music");
-
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-        } else if (args[0].equalsIgnoreCase("off")) {
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use.off"))) {
-                if (this.modelist.containsKey(player.getName())) {
-                    if (this.modelist.containsKey(player.getName())) {
-                        this.modelist.remove(player.getName());
-                        this.skulllist.remove(player.getName());
-                        this.getConfig().set("Users." + player.getName(), null);
-                        this.saveConfig();
-                        player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.off")));
-                    } else {
-                        player.sendMessage("This player is not using a trail.");
-                    }
-                } else {
-                    player.sendMessage("You need to have a trail on in order to turn it off.");
-
-                }
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other.off"))) {
-                Player player2 = Bukkit.getServer().getPlayer(args[1]);
-                if (this.modelist.containsKey(player2.getName())) {
-                    this.modelist.remove(player2.getName());
-                    this.skulllist.remove(player2.getName());
-                    player2.sendMessage(this.lol + "Your trail(s) is now off!");
-
-                } else {
-                    player.sendMessage("This player is not using a trail.");
-                }
-            } else {
-                player.sendMessage(this.Red + "You don't have permission to do this");
-            }
-
-        } else if (args[0].equalsIgnoreCase("list")) {
+        } else  if (args[0].equalsIgnoreCase("list")) {
             String result = "";
             String comma = ", ";
             for (String s : trails) {
@@ -517,6 +251,7 @@ public class trail extends JavaPlugin {
             }
 
             player.sendMessage(result);
+            
         } else if (args[0].equalsIgnoreCase("multi")) {
             if (player.hasPermission("smoketrail.multi")) {
                 if (args.length > 1) {
