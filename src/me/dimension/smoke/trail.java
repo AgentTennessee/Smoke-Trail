@@ -50,7 +50,7 @@ public class trail extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         this.saveResource("config.yml", false);
         this.getConfig();
-        this.reloadConfig(); 
+        this.reloadConfig();
         loadValues();
         pm.registerEvents(pl, this);
         if (this.getConfig().contains("Messages.breadcrumb")) {
@@ -90,7 +90,7 @@ public class trail extends JavaPlugin {
                 modelist.put(str, trailuser);
             }
         }
-     this.saveConfig();
+        this.saveConfig();
     }
 
     @Override
@@ -115,11 +115,9 @@ public class trail extends JavaPlugin {
         CommandExecutor commandExecutor = new CommandExecutor() {
             @Override
             public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-                if (((sender instanceof Player))
-                        && (args.length > 0)) {
+                if ((sender instanceof Player) && (args.length > 0)) {
                     trail.this.commandHandler((Player) sender, args);
-                } else if (((sender instanceof Player))
-                        && (args.length == 0)) {
+                } else if ((sender instanceof Player) && (args.length == 0)) {
                     Random random = new Random();
                     sender.sendMessage(ChatColor.RED + "For a list of trails do /trail list or try out /trail " + trails[random.nextInt(trails.length)]);
                 }
@@ -135,12 +133,12 @@ public class trail extends JavaPlugin {
 
     public void commandHandler(Player player, String[] args) {
         //Allow the player/player chosen from argument to use any of the trails based off of what they chose in their command
-        if(Arrays.asList(trails).contains(args[0]) && !args[0].equalsIgnoreCase("multi")){
-            if ((args.length == 1) && (player.hasPermission("smoketrail.use."+args[0]))) {
+        if (Arrays.asList(trails).contains(args[0]) && !args[0].equalsIgnoreCase("multi")) {
+            if ((args.length == 1) && (player.hasPermission("smoketrail.use." + args[0]))) {
 
                 switchTrails(player.getName(), args[0]);
 
-            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other."+args[0]))) {
+            } else if ((args.length == 2) && (player.hasPermission("smoketrail.other." + args[0]))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
 
                 switchTrails(player2.getName(), args[0]);
@@ -149,7 +147,7 @@ public class trail extends JavaPlugin {
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
-        } else if(args[0].equalsIgnoreCase("off")){
+        } else if (args[0].equalsIgnoreCase("off")) {
             if ((args.length == 1) && (player.hasPermission("smoketrail.use.off"))) {
                 if (this.modelist.containsKey(player.getName())) {
                     if (this.modelist.containsKey(player.getName())) {
@@ -178,23 +176,23 @@ public class trail extends JavaPlugin {
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
             }
-            
-        }else if(args[0].equalsIgnoreCase("reload")){
-            if(player.hasPermission("smoketrail.reload")){
+
+        } else if (args[0].equalsIgnoreCase("reload")) {
+            if (player.hasPermission("smoketrail.reload")) {
                 this.reloadConfig();
-             loadValues();
+                loadValues();
             } else {
                 player.sendMessage(ChatColor.RED + "You don't have permission to use this command");
             }
-        } else  if (args[0].equalsIgnoreCase("list")) {
+        } else if (args[0].equalsIgnoreCase("list")) {
             String result = "";
             String comma = ", ";
             for (String s : trails) {
                 if (s.equalsIgnoreCase("multi")) {
                     if (player.hasPermission("smoketrail.multi")) {
-                        result += ChatColor.BLUE +s;
+                        result += ChatColor.BLUE + s;
                     } else {
-                        result += ChatColor.RED +s;
+                        result += ChatColor.RED + s;
                     }
                 } else {
                     if (player.hasPermission("smoketrail.use." + s)) {
@@ -204,11 +202,11 @@ public class trail extends JavaPlugin {
                     }
 
                 }
-                result += ChatColor.WHITE +comma;
+                result += ChatColor.WHITE + comma;
             }
 
             player.sendMessage(result);
-            
+
         } else if (args[0].equalsIgnoreCase("multi")) {
             if (player.hasPermission("smoketrail.multi")) {
                 if (args.length > 1) {
@@ -353,7 +351,8 @@ public class trail extends JavaPlugin {
         this.saveConfig();
 
     }
-    public void loadValues(){
+
+    public void loadValues() {
         pl.FireLow = getConfig().getInt("TrailValues.FireLow");
         pl.FireHigh = getConfig().getInt("TrailValues.FireHigh");
 
@@ -398,7 +397,7 @@ public class trail extends JavaPlugin {
 
         pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
         pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
-        
+
     }
     /* public void reloadConfig() {
      if (this.getConfig()File == null) {
