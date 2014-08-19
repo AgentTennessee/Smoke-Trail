@@ -53,24 +53,7 @@ public class trail extends JavaPlugin {
         this.reloadConfig();
         loadValues();
         pm.registerEvents(pl, this);
-        if (this.getConfig().contains("Messages.breadcrumb")) {
-            String fix = this.getConfig().getString("Messages.breadcrumb.enabled");
-            String fix2 = this.getConfig().getString("Messages.breadcrumb.disabled");
-            this.getConfig().set("Messages.breadcrumb.enabled", null);
-            this.getConfig().set("Messages.breadcrumb.disabled", null);
-            this.getConfig().set("Messages.breadcrumbs.enabled", fix);
-            this.getConfig().set("Messages.breadcrumbs.disabled", fix2);
-            this.saveConfig();
-
-        }
-        if (!this.getConfig().contains("DisableOnLeave")) {
-            this.getConfig().set("DisableOnLeave", false);
-            this.saveConfig();
-        }
-        if (!this.getConfig().contains("Messages.off")) {
-            this.getConfig().set("Messages.off", "&6[&cST&6] &cTrail(s) disabled!");
-            this.saveConfig();
-        }
+        fixConfig();
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
@@ -399,80 +382,24 @@ public class trail extends JavaPlugin {
         pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
 
     }
-    /* public void reloadConfig() {
-     if (this.getConfig()File == null) {
-     this.getConfig()File = new File(getDataFolder(), "this.getConfig().yml");
-     }
-     this.getConfig() = YamlConfiguration.loadConfiguration(this.getConfig()File);
- 
-     // Look for defaults in the jar
-     InputStream defConfigStream = this.getResource("this.getConfig().yml");
-     if (defConfigStream != null) {
-     YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
-     this.getConfig().setDefaults(defConfig);
-     saveDefaultConfig();
-     }
-     }
-     public FileConfiguration getConfig() {
-     if (this.getConfig() == null) {
-     reloadConfig();
-     }
-     return this.getConfig();
-     }
-     public void saveConfig() {
-     if (this.getConfig() == null || this.getConfig()File == null) {
-     return;
-     }
-     try {
-     getConfig().save(this.getConfig()File);
-     } catch (IOException ex) {
-     plugin.getLogger().log(Level.SEVERE, "Could not save this.getConfig() to " + this.getConfig()File, ex);
-     }
-     }
-     public void reloadMessages() {
-     if (messagesFile == null) {
-     messagesFile = new File(getDataFolder(), "messages.yml");
-     }
-     messages = YamlConfiguration.loadConfiguration(messagesFile);
- 
-     // Look for defaults in the jar
-     InputStream defConfigStream = this.getResource("messages.yml");
-     if (defConfigStream != null) {
-     YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
-     messages.setDefaults(defConfig);
-     saveDefaultMessages();
-     }
-     }
-     public FileConfiguration getMessages() {
-     if (messages == null) {
-     reloadMessages();
-     }
-     return messages;
-     }
-     public void saveMessages() {
-     if (messages == null || messagesFile == null) {
-     return;
-     }
-     try {
-     getMessages().save(messagesFile);
-     } catch (IOException ex) {
-     plugin.getLogger().log(Level.SEVERE, "Could not save this.getConfig() to " + messagesFile, ex);
-     }
-     }
-     public void saveDefaultConfig() {
-     if (this.getConfig()File == null) {
-     this.getConfig()File = new File(getDataFolder(), "this.getConfig().yml");
-     }
-     if (!this.getConfig()File.exists()) {            
-     this.saveResource("this.getConfig().yml", false);
-     }
-     }
-     public void saveDefaultMessages() {
-     if (messagesFile == null) {
-     messagesFile = new File(getDataFolder(), "messages.yml");
-     }
-     if (!messagesFile.exists()) {            
-     this.saveResource("messages.yml", false);
-     }
-     }*/
+   public void fixConfig(){
+        if (this.getConfig().contains("Messages.breadcrumb")) {
+            String fix = this.getConfig().getString("Messages.breadcrumb.enabled");
+            String fix2 = this.getConfig().getString("Messages.breadcrumb.disabled");
+            this.getConfig().set("Messages.breadcrumb.enabled", null);
+            this.getConfig().set("Messages.breadcrumb.disabled", null);
+            this.getConfig().set("Messages.breadcrumbs.enabled", fix);
+            this.getConfig().set("Messages.breadcrumbs.disabled", fix2);
+            this.saveConfig();
+
+        }
+        if (!this.getConfig().contains("DisableOnLeave")) {
+            this.getConfig().set("DisableOnLeave", false);
+            this.saveConfig();
+        }
+        if (!this.getConfig().contains("Messages.off")) {
+            this.getConfig().set("Messages.off", "&6[&cST&6] &cTrail(s) disabled!");
+            this.saveConfig();
+        }
+   }
 }
