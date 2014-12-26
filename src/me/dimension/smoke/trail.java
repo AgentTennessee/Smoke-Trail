@@ -33,7 +33,7 @@ public class trail extends JavaPlugin {
      public String Custom2 = "[Custom Trail 2] ";
      public String Custom3 = "[Custom Trail 3] ";
      public String Dynamic = "[Dyna Trail] "; */
-    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "fireworks", "snow", "happy", "magic", "music", "multi"};
+    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "fireworks", "happy", "magic", "music", "multi"};
     public ChatColor Red = ChatColor.RED;
     public ChatColor Blue = ChatColor.BLUE;
     public String on = "is now on";
