@@ -80,6 +80,10 @@ public class traillistener
     public int SnowLow ;
     public int HappyHigh;
     public int HappyLow;
+    public int AngerHigh;
+    public int AngerLow;
+    public int CloudHigh;
+    public int CloudLow;
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
         Entity newitem = event.getItem();

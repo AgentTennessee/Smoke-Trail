@@ -37,6 +37,8 @@ permissions:
       smoketrail.use.music: true
       smoketrail.use.snow: true
       smoketrail.use.fireworks: true
+      smoketrail.use.anger: true
+      smoketrail.use.clouds: true
       smoketrail.use.off: true
   smoketrail.multi:
     default: op
@@ -52,7 +54,7 @@ permissions:
       smoketrail.other.loot: true
       smoketrail.other.stars: true
       smoketrail.other.disco: true
-      smoketrail.other.off: true
+      smoketrail.other.fireworks: true
       smoketrail.other.blood: true
       smoketrail.other.magma: true
       smoketrail.other.breadcrumb: true
@@ -62,4 +64,6 @@ permissions:
       smoketrail.other.magic: true
       smoketrail.other.snow: true
       smoketrail.other.happy: true
+      smoketrail.other.clouds: true
+      smoketrail.other.anger: true
       smoketrail.other.off: true

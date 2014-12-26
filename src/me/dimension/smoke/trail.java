@@ -200,15 +200,15 @@ public class trail extends JavaPlugin {
                     }
                     List<String> trailstoggled = new ArrayList<String>();
 
-                    Boolean invalid = false;
+                    
                     if (this.getConfig().contains("Users." + player.getName())) {
                         this.getConfig().set("Users." + player.getName(), null);
                     } else {
                         this.getConfig().set("Users." + player.getName(), null);
                     }
-                    for (int i = 0; i < args.length; i++) {
-                        if (args[i].equalsIgnoreCase("multi")) {
-                        } else if (Arrays.asList(trails).contains(args[i])) {
+                    for (int i = 1; i < args.length; i++) {
+                        
+                        if (Arrays.asList(trails).contains(args[i])) {
                             if (player.hasPermission("trails.use." + args[i])) {
                                 this.modelist.get(player.getName()).add(args[i]);
                                 this.getConfig().set("Users." + player, this.getConfig().get("Users." + player.getName()) + "," + args[i]);
@@ -217,10 +217,10 @@ public class trail extends JavaPlugin {
 
                             }
                         } else {
-                            if (invalid = false) {
-                                player.sendMessage(Red + "Invalid trail(s) found!");
-                                invalid = true;
-                            }
+                            
+                                player.sendMessage(Red + "Error: " + args[i] + " is not a trail!"  );
+                               
+                            
                         }
                     }
                     if (trailstoggled.size() > 1) {
@@ -380,6 +380,12 @@ public class trail extends JavaPlugin {
 
         pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
         pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
+        
+        pl.AngerHigh = getConfig().getInt("TrailValues.HappyHigh");
+        pl.AngerLow = getConfig().getInt("TrailValues.HappyLow");
+        
+        pl.CloudHigh = getConfig().getInt("TrailValues.HappyHigh");
+        pl.CloudLow = getConfig().getInt("TrailValues.HappyLow");
 
     }
    public void fixConfig(){
@@ -400,6 +406,6 @@ public class trail extends JavaPlugin {
         if (!this.getConfig().contains("Messages.off")) {
             this.getConfig().set("Messages.off", "&6[&cST&6] &cTrail(s) disabled!");
             this.saveConfig();
-        }
+        }      
    }
 }

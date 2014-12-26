@@ -33,6 +33,10 @@ TrailValues:
   NotesHigh: 8
   SnowLow: 2
   SnowHigh: 8
+  AngerHigh: 2
+  AngerLow: 5
+  CloudHigh: 5
+  CloudLow: 10
 Messages: 
   smoke:
     enabled: "&6[&cST&6] &7Smoke &aTrail Enabled!"
