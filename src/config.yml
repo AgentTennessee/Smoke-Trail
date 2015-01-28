@@ -91,9 +91,9 @@ Messages:
     enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
     disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
   anger:
-    enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
-    disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
+    enabled: "&6[&cST&6] &cAnger &aTrail Enabled!"
+    disabled: "&6[&cST&6] &cAnger &cTrail Disabled!"
   clouds:
-    enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
-    disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
+    enabled: "&6[&cST&6] &fClouds &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fClouds &cTrail Disabled!"
   off: "&6[&cST&6] &cTrail(s) disabled!"
