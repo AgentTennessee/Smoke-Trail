@@ -29,17 +29,16 @@ public class trail extends JavaPlugin {
     public boolean enabled = false;
     public String lol = "[Smoke Trail] ";
     public String Multi = "[Multi Trail] ";
-    /*   public String Custom1 = "[Custom Trail 1] ";
-     public String Custom2 = "[Custom Trail 2] ";
-     public String Custom3 = "[Custom Trail 3] ";
-     public String Dynamic = "[Dyna Trail] "; */
-    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "fireworks", "happy", "magic", "music", "anger","clouds","multi"};
+//Done Trails:
+//Smoke,Fire,Ender,Flower,Loot,Stars,Hearts,Crit,Sweat,Disco,Blood.Sparks,Breadcrumb,Magma,Letters,Happy
+//Magic,Music,Anger,Cloud
+    public String[] trails = {"smoke", "fire", "ender", "flowers", "loot", "stars", "hearts", "crit", "sweat", 
+        "disco", "blood", "sparks", "breadcrumb", "magma", "letters", "happy", "magic", "music", "anger","clouds","multi"};
     public ChatColor Red = ChatColor.RED;
     public ChatColor Blue = ChatColor.BLUE;
     public String on = "is now on";
     public String off = "is now off";
     public final HashMap<String, ArrayList<String>> modelist = new HashMap();
-    public final HashMap<String, ArrayList<String>> skulllist = new HashMap();
     public final traillistener pl = new traillistener(this);
     public final trailutil util = new trailutil(this);
 
@@ -135,7 +134,6 @@ public class trail extends JavaPlugin {
                 if (this.modelist.containsKey(player.getName())) {
                     if (this.modelist.containsKey(player.getName())) {
                         this.modelist.remove(player.getName());
-                        this.skulllist.remove(player.getName());
                         this.getConfig().set("Users." + player.getName(), null);
                         this.saveConfig();
                         player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.off")));
@@ -150,7 +148,6 @@ public class trail extends JavaPlugin {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
                 if (this.modelist.containsKey(player2.getName())) {
                     this.modelist.remove(player2.getName());
-                    this.skulllist.remove(player2.getName());
                     player2.sendMessage(this.lol + "Your trail(s) is now off!");
 
                 } else {
@@ -312,28 +309,6 @@ public class trail extends JavaPlugin {
         }
     }
 
-    public void removeSkull(String player, String newskull) {
-        String p = this.getConfig().getString("Skulls." + player);
-        String[] split = p.split(",");
-        ArrayList<String> trailuser = new ArrayList<String>();
-        trailuser.addAll(Arrays.asList(split));
-        trailuser.remove(newskull);
-        String skulls = null;
-        for (String trailuser1 : trailuser) {
-            skulls += trailuser1;
-            skulls += ",";
-        }
-        this.getConfig().set("Skulls." + player, skulls);
-        this.saveConfig();
-
-    }
-
-    public void addSkull(String player, String newskull) {
-        this.reloadConfig();
-        this.getConfig().set("Skulls." + player, this.getConfig().get("Skulls" + player) + "," + newskull);
-        this.saveConfig();
-
-    }
 
     public void loadValues() {
         pl.FireLow = getConfig().getInt("TrailValues.FireLow");
@@ -375,9 +350,6 @@ public class trail extends JavaPlugin {
         pl.MagicHigh = getConfig().getInt("TrailValues.MagicHigh");
         pl.MagicLow = getConfig().getInt("TrailValues.MagicLow");
 
-        pl.SnowHigh = getConfig().getInt("TrailValues.SnowHigh");
-        pl.SnowLow = getConfig().getInt("TrailValues.SnowLow");
-
         pl.HappyHigh = getConfig().getInt("TrailValues.HappyHigh");
         pl.HappyLow = getConfig().getInt("TrailValues.HappyLow");
         
@@ -389,23 +361,6 @@ public class trail extends JavaPlugin {
 
     }
    public void fixConfig(){
-        if (this.getConfig().contains("Messages.breadcrumb")) {
-            String fix = this.getConfig().getString("Messages.breadcrumb.enabled");
-            String fix2 = this.getConfig().getString("Messages.breadcrumb.disabled");
-            this.getConfig().set("Messages.breadcrumb.enabled", null);
-            this.getConfig().set("Messages.breadcrumb.disabled", null);
-            this.getConfig().set("Messages.breadcrumbs.enabled", fix);
-            this.getConfig().set("Messages.breadcrumbs.disabled", fix2);
-            this.saveConfig();
-
-        }
-        if (!this.getConfig().contains("DisableOnLeave")) {
-            this.getConfig().set("DisableOnLeave", false);
-            this.saveConfig();
-        }
-        if (!this.getConfig().contains("Messages.off")) {
-            this.getConfig().set("Messages.off", "&6[&cST&6] &cTrail(s) disabled!");
-            this.saveConfig();
-        }      
+        //Nothing here for newest update because I want people to refresh their config file.
    }
 }

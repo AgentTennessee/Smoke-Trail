@@ -29,10 +29,10 @@ TrailValues:
   HappyHigh: 12
   MagicLow: 4
   MagicHigh: 7
+  MusicHigh: 10
+  MusicLow: 4
   NotesLow: 4
   NotesHigh: 8
-  SnowLow: 2
-  SnowHigh: 8
   AngerHigh: 2
   AngerLow: 5
   CloudHigh: 5
@@ -83,12 +83,6 @@ Messages:
   letters:
     enabled: "&6[&cST&6] &0Letters &aTrail Enabled!"
     disabled: "&6[&cST&6] &0Letters &cTrail Disabled!"
-  fireworks:
-    enabled: "&6[&cST&6] &4Fireworks &aTrail Enabled!"
-    disabled: "&6[&cST&6] &4Fireworks &cTrail Disabled!"
-  snow:
-    enabled: "&6[&cST&6] &fSnow &aTrail Enabled!"
-    disabled: "&6[&cST&6] &fSnow &cTrail Disabled!"
   happy:
     enabled: "&6[&cST&6] &eHappy &aTrail Enabled!"
     disabled: "&6[&cST&6] &eHappy &cTrail Disabled!"
@@ -96,6 +90,12 @@ Messages:
     enabled: "&6[&cST&6] &fMagic &aTrail Enabled!"
     disabled: "&6[&cST&6] &fMagic &cTrail Disabled!"
   music:
+    enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
+  anger:
+    enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
+    disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
+  clouds:
     enabled: "&6[&cST&6] &fMusic &aTrail Enabled!"
     disabled: "&6[&cST&6] &fMusic &cTrail Disabled!"
   off: "&6[&cST&6] &cTrail(s) disabled!"
