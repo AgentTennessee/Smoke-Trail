@@ -122,9 +122,12 @@ public class trail extends JavaPlugin {
 
             } else if ((args.length == 2) && (player.hasPermission("smoketrail.other." + args[0]))) {
                 Player player2 = Bukkit.getServer().getPlayer(args[1]);
-
-                switchTrails(player2.getName(), args[0]);
-                player.sendMessage(ChatColor.GREEN + "Trail toggled for" + player2.getName());
+                if(player2 == null){
+                    player.sendMessage(ChatColor.RED + args[0] + " is not a real person");
+                } else {
+                    switchTrails(player2.getName(), args[0]);
+                    player.sendMessage(ChatColor.GREEN + "Trail toggled for" + player2.getName());
+                }
 
             } else {
                 player.sendMessage(this.Red + "You don't have permission to do this");
@@ -136,7 +139,7 @@ public class trail extends JavaPlugin {
                         this.modelist.remove(player.getName());
                         this.getConfig().set("Users." + player.getName(), null);
                         this.saveConfig();
-                        player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.off")));
+                        player.sendMessage(trailutil.colorize(this.getConfig().getString("Messages.DisableMessage")));
                     } else {
                         player.sendMessage("This player is not using a trail.");
                     }
@@ -220,7 +223,7 @@ public class trail extends JavaPlugin {
                             
                         }
                     }
-                    if (trailstoggled.size() > 1) {
+                    if (trailstoggled.size() >= 1) {
                         player.sendMessage(ChatColor.GREEN + Multi + ChatColor.BLUE + "Trails enabled: " + trailstoggled.toString());
                     }
                 } else {
