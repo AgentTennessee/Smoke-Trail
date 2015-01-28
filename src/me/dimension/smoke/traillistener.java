@@ -9,14 +9,9 @@ import java.util.UUID;
 import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +25,6 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
 
 public class traillistener
         implements Listener {
@@ -50,40 +44,44 @@ public class traillistener
     public traillistener(trail instance) {
         plugin = instance;
     }
+    //<editor-fold defaultstate="collapsed" desc=" Trail Integers ">
     public int FireLow;
     public int FireHigh;
-    public int SmokeLow;;
+    public int SmokeLow;
+    
     public int SmokeHigh;
-    public int HeartLow ;
+    public int HeartLow;
     public int HeartHigh;
     public int EnderHigh;
-    public int EnderLow ;
-    public int CritHigh ;
-    public int CritLow ;
+    public int EnderLow;
+    public int CritHigh;
+    public int CritLow;
     public int SweatHigh;
-    public int SweatLow ;
+    public int SweatLow;
     public int DiscoHigh;
-    public int DiscoLow ;
+    public int DiscoLow;
     public int MagmaHigh;
-    public int MagmaLow ;
-    public int LetterHigh ;
-    public int LetterLow ;
-    public int SparkHigh ;
-    public int SparkLow ;
-    public int BreadHigh ;
-    public int BreadLow  ;
+    public int MagmaLow;
+    public int LetterHigh;
+    public int LetterLow;
+    public int SparkHigh;
+    public int SparkLow;
+    public int BreadHigh;
+    public int BreadLow;
     public int BloodHigh;
-    public int BloodLow  ;
+    public int BloodLow;
     public int MagicHigh;
-    public int MagicLow ;
-    public int SnowHigh ;
-    public int SnowLow ;
+    public int MagicLow;
+    public int MusicHigh;
+    public int MusicLow;
     public int HappyHigh;
     public int HappyLow;
     public int AngerHigh;
     public int AngerLow;
     public int CloudHigh;
     public int CloudLow;
+
+//</editor-fold>
     @EventHandler
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {
         Entity newitem = event.getItem();
@@ -194,67 +192,44 @@ public class traillistener
     public void onPlayerMoveEvent(PlayerMoveEvent event) {
         final Player sender = event.getPlayer();
         World world = sender.getWorld();
-
-        if (plugin.modelist.containsKey(event.getPlayer().getName())) {
-            if ((plugin.modelist.get(event.getPlayer().getName())).contains("fire")) {
-                if (!trailNegative(FireHigh, FireLow)) {
-                    Random random = new Random();
-                    ParticleEffect.FLAME.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((FireHigh - FireLow) + FireLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("disco")) {
-                if (!trailNegative(DiscoHigh, DiscoLow)) {
-                    Random random = new Random();
-                    ParticleEffect.RED_DUST.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1);
-                    ParticleEffect.MOB_SPELL.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("music")) {
-
-                Random random = new Random();
-                ParticleEffect.NOTE.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((10 - 4) + 4) + 1);
-
-            }
-
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("ender")) {
-                if (!trailNegative(EnderHigh, EnderLow)) {
-                    Random random = new Random();
-                    ParticleEffect.PORTAL.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((EnderHigh - EnderLow) + EnderLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("smoke")) {
+        
+        
+        //<editor-fold defaultstate="collapsed" desc=" Smoke Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("smoke")) {
                 if (!trailNegative(SmokeHigh, SmokeLow)) {
                     Random random = new Random();
-                    ParticleEffect.LARGE_SMOKE.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SmokeHigh - SmokeLow) + SmokeLow) + 1);
+                    ParticleEffect.LARGE_SMOKE.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SmokeHigh - SmokeLow) + SmokeLow) + 1);
                 }
             }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("hearts")) {
-                if (!trailNegative(HeartHigh, HeartLow)) {
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Fire Trail ">
+        if (plugin.modelist.containsKey(sender.getName())) {
+            if ((plugin.modelist.get(sender.getName())).contains("fire")) {
+                if (!trailNegative(FireHigh, FireLow)) {
                     Random random = new Random();
-                    ParticleEffect.HEART.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 3, random.nextInt((HeartHigh - HeartLow) + HeartLow) + 1);
+                    ParticleEffect.FLAME.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((FireHigh - FireLow) + FireLow) + 1);
                 }
             }
 
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("sweat")) {
-                if (!trailNegative(SweatHigh, SweatLow)) {
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Ender Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("ender")) {
+                if (!trailNegative(EnderHigh, EnderLow)) {
                     Random random = new Random();
-                    ParticleEffect.SPLASH.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 2, random.nextInt((SweatHigh - SweatLow) + SweatLow) + 1);
+                    ParticleEffect.PORTAL.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((EnderHigh - EnderLow) + EnderLow) + 1);
                 }
             }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("crit")) {
-                if (!trailNegative(CritHigh, CritLow)) {
-                    Random random = new Random();
-                    ParticleEffect.CRIT.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((CritHigh - CritLow) + CritLow) + 1);
-                }
 
-            }
-
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("flowers")) {
-
+//</editor-fold>   
+        //<editor-fold defaultstate="collapsed" desc=" Flower Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("flowers")) {
+                
                 if (flower.containsKey(sender)) {
 
-                //Spawn flowers when player walks based off what number is generated a 50% chance to pick either one
+                    //Spawn flowers when player walks based off what number is generated a 50% chance to pick either one
                     //Also add each item spawned to the player's personal list of items that has been spawned and add it to the global list of items spawned
+                    //<editor-fold defaultstate="collapsed" desc=" List of flowers ">
                     ItemStack redrose = new ItemStack(Material.RED_ROSE, 1);
                     ItemStack blueorchid = new ItemStack(Material.RED_ROSE, 1, (short) 1);
                     ItemStack allium = new ItemStack(Material.RED_ROSE, 1, (short) 2);
@@ -270,10 +245,12 @@ public class traillistener
                     ItemStack peony = new ItemStack(Material.RED_ROSE, 1, (short) 5);
                     ItemStack dandelion = new ItemStack(Material.YELLOW_FLOWER, 1);
                     ItemStack[] flowerlist = {redrose, blueorchid, allium, azurebluet, redtulip, orangetulip, whitetulip, pinktulip, oxeyedaisy, sunflower, lilac, rosebush, peony, dandelion};
+
+//</editor-fold> 
                     Random flowerdrop = new Random();
                     int newflower = flowerdrop.nextInt(flowerlist.length);
                     Entity nextflower = world.dropItem(event.getFrom(), flowerlist[newflower]);
-
+                    
                     this.flower.get(sender).add(nextflower);
                     allitems.add(nextflower);
                     allitemstacks.add(flowerlist[newflower]);
@@ -294,14 +271,16 @@ public class traillistener
                             }
                         }
                     }, 100L);
-
+                    
                 } else {
                     flower.put(sender, new ArrayList<Entity>());
                 }
-
+                
             }
-            //Drops loot when the players moves
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("loot")) {
+
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Loot Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("loot")) {
                 //Picks what will drop based off of a randomly generated number
                 if (diamonds.containsKey(sender)) {
                     ItemStack diamond1 = new ItemStack(Material.DIAMOND);
@@ -344,141 +323,23 @@ public class traillistener
                             }
                         }
                     }, 80L);
-
+                    
                 } else {
                     diamonds.put(sender, new ArrayList<Entity>());
-
+                    
                 }
             }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("letters")) {
-                if (!trailNegative(LetterHigh, LetterLow)) {
-                    Random random = new Random();
-                    ParticleEffect.ENCHANTMENT_TABLE.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((LetterHigh - LetterLow) + LetterLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("blood")) {
-                if (!trailNegative(BloodHigh, BloodLow)) {
-                    Random random = new Random();
-                    ParticleEffect.RED_DUST.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((BloodHigh - BloodLow) + BloodLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("breadcrumb")) {
-                if (!trailNegative(BreadHigh, BreadLow)) {
-                    Random random = new Random();
-                    ParticleEffect.DRIP_LAVA.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((BreadHigh - BreadLow) + BreadLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("magma")) {
-                if (!trailNegative(MagmaHigh, MagmaLow)) {
-                    Random random = new Random();
-                    ParticleEffect.LAVA.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagmaHigh - MagmaLow) + MagmaLow) + 1);
-                }
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("magic")) {
-                if (!trailNegative(MagicHigh, MagicLow)) {
-                    Random random = new Random();
-                    ParticleEffect.MAGIC_CRIT.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1);
-                    ParticleEffect.WITCH_MAGIC.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1);
-                }
 
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("happy")) {
-                if (!trailNegative(HappyHigh, HappyLow)) {
-                    Random random = new Random();
-                    ParticleEffect.HAPPY_VILLAGER.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((HappyHigh - HappyLow) + HappyLow) + 1);
-                }
-
-            }
-            if ((plugin.modelist.get(event.getPlayer().getName())).contains("snow")) {
-                if (!trailNegative(SnowHigh, SnowLow)) {
-                    Random random = new Random();
-                    ParticleEffect.displayBlockDust(event.getPlayer().getLocation(), 80, (byte) 0, random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SnowHigh - SnowLow) + SnowLow) + 1);
-                    ParticleEffect.SNOW_SHOVEL.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SnowHigh - SnowLow) + SnowLow) + 1);
-                    ParticleEffect.SNOWBALL_POOF.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SnowHigh - SnowLow) + SnowLow) + 1);
-
-                }
-
-            }
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("sparks")) {
-                if (!trailNegative(SparkHigh, SparkLow)) {
-                    Random random = new Random();
-                    ParticleEffect.FIREWORKS_SPARK.display(event.getPlayer().getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SparkHigh - SparkLow) + SparkLow) + 1);
-
-                }
-            }
-            /*if (plugin.modelist.get(event.getPlayer().getName()).contains("skulls")) {
-             //Picks what will drop based off of a randomly generated number
-             Player player = event.getPlayer();
-             if (skulls.containsKey(sender)) {
-             ItemStack witherskull = new ItemStack(Material.SKULL_ITEM, 1, (short) 1);
-             ItemStack creeperskull = new ItemStack(Material.SKULL_ITEM, 1, (short) 4);
-             ItemStack zombieskull = new ItemStack(Material.SKULL_ITEM, 1, (short) 2);
-             ItemStack skeletonskull = new ItemStack(Material.SKULL_ITEM, 1);
-             ItemStack steveskull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
-             ArrayList<ItemStack> skulllist = new ArrayList<ItemStack>();
-
-             if (plugin.skulllist.get(player.getPlayerListName()).contains("wither")) {
-             skulllist.add(witherskull);
-             }
-
-
-             if (plugin.skulllist.get(player.getPlayerListName()).contains("creeper")) {
-             skulllist.add(creeperskull);
-             }
-
-
-             if (plugin.skulllist.get(player.getPlayerListName()).contains("zombie")) {
-             }
-             skulllist.add(zombieskull);
-
-
-             if (plugin.skulllist.get(player.getPlayerListName()).contains("skeleton")) {
-
-             skulllist.add(skeletonskull);
-             }
-
-
-             if (plugin.skulllist.get(player.getPlayerListName()).contains("steve")) {
-
-             skulllist.add(steveskull);
-             }
-             if(skulllist.size()>1){
-             Random dropchance = new Random();
-             int dropped = dropchance.nextInt((skulllist.size()));
-             Entity diamonddrop = world.dropItem(event.getFrom(), skulllist.get(dropped));
-             skulls.get(sender).add(diamonddrop);
-             allitems.add(diamonddrop);
-             }
-             //Removes said loot after a short period of time
-             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-             public void run() {
-             if (!skulls.get(sender).isEmpty()) {
-             Iterator alpha = traillistener.this.skulls.get(sender).iterator();
-             Entity next1 = (Entity) alpha.next();
-             skulls.get(sender).remove(next1);
-             allitems.remove(next1);
-             next1.remove();
-             } else {
-             Bukkit.getScheduler().cancelTasks(traillistener.plugin);
-             }
-             }
-             }, 80L);
-
-             } else {
-             skulls.put(sender, new ArrayList<Entity>());
-
-             }
-             }
-             */
-            //Drops nether stars when the player walks
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("stars")) {
-
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Stars Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("stars")) {
+                
                 if (stars.containsKey(sender)) {
                     ItemStack stardrop = new ItemStack(Material.NETHER_STAR);
                     Entity nextflower = world.dropItem(event.getFrom(), stardrop);
                     allitems.add(nextflower);
                     this.stars.get(sender).add(nextflower);
-
+                    
                     Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
                         public void run() {
                             if (!traillistener.this.stars.get(sender).isEmpty()) {
@@ -502,113 +363,146 @@ public class traillistener
                 //Removes the diamonds
             }
 
-            if (plugin.modelist.get(event.getPlayer().getName()).contains("fireworks")) {
-                Firework fw = (Firework) sender.getWorld().spawnEntity(sender.getLocation(), EntityType.FIREWORK);
-                FireworkMeta fwm = fw.getFireworkMeta();
-
-                //Our random generator
-                Random r = new Random();
-
-                //Get the type
-                int rt = r.nextInt(4) + 1;
-                Type type = Type.BALL;
-                if (rt == 1) {
-                    type = Type.BALL;
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Hearts trail ">
+            if (plugin.modelist.get(sender.getName()).contains("hearts")) {
+                if (!trailNegative(HeartHigh, HeartLow)) {
+                    Random random = new Random();
+                    ParticleEffect.HEART.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 3, random.nextInt((HeartHigh - HeartLow) + HeartLow) + 1);
                 }
-                if (rt == 2) {
-                    type = Type.BALL_LARGE;
-                }
-                if (rt == 3) {
-                    type = Type.BURST;
-                }
-                if (rt == 4) {
-                    type = Type.CREEPER;
-                }
-                if (rt == 5) {
-                    type = Type.STAR;
-                }
-
-                //Get our random colours 
-                int r1i = r.nextInt(17) + 1;
-                int r2i = r.nextInt(17) + 1;
-                Color c1 = getColor(r1i);
-                Color c2 = getColor(r2i);
-
-                //Create our effect with this
-                FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withFade(c2).with(type).trail(r.nextBoolean()).build();
-
-                //Then apply the effect to the meta
-                fwm.addEffect(effect);
-
-                //Generate some random power and set it
-                int rp = 1;
-                fwm.setPower(rp);
-
-                //Then apply this to our rocket
-                fw.setFireworkMeta(fwm);
-                fw.detonate();
             }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Crit Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("crit")) {
+                if (!trailNegative(CritHigh, CritLow)) {
+                    Random random = new Random();
+                    ParticleEffect.CRIT.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((CritHigh - CritLow) + CritLow) + 1);
+                }
+                
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Sweat Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("sweat")) {
+                if (!trailNegative(SweatHigh, SweatLow)) {
+                    Random random = new Random();
+                    ParticleEffect.SPLASH.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 2, random.nextInt((SweatHigh - SweatLow) + SweatLow) + 1);
+                }
+            }
+
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Disco Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("disco")) {
+                if (!trailNegative(DiscoHigh, DiscoLow)) {
+                    Random random = new Random();
+                    ParticleEffect.RED_DUST.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1);
+                    ParticleEffect.MOB_SPELL.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((DiscoHigh - DiscoLow) + DiscoLow) + 1);
+                }
+            }
+
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Blood Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("blood")) {
+                if (!trailNegative(BloodHigh, BloodLow)) {
+                    Random random = new Random();
+                    ParticleEffect.RED_DUST.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((BloodHigh - BloodLow) + BloodLow) + 1);
+                }
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Sparks Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("sparks")) {
+                if (!trailNegative(SparkHigh, SparkLow)) {
+                    Random random = new Random();
+                    ParticleEffect.FIREWORKS_SPARK.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((SparkHigh - SparkLow) + SparkLow) + 1);
+                    
+                }
+            }
+
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Breadcrumb trail ">
+            if (plugin.modelist.get(sender.getName()).contains("breadcrumb")) {
+                if (!trailNegative(BreadHigh, BreadLow)) {
+                    Random random = new Random();
+                    ParticleEffect.DRIP_LAVA.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((BreadHigh - BreadLow) + BreadLow) + 1);
+                }
+            }
+
+//</editor-fold>    
+        //<editor-fold defaultstate="collapsed" desc=" Magma Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("magma")) {
+                if (!trailNegative(MagmaHigh, MagmaLow)) {
+                    Random random = new Random();
+                    ParticleEffect.LAVA.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagmaHigh - MagmaLow) + MagmaLow) + 1);
+                }
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Letters Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("letters")) {
+                if (!trailNegative(LetterHigh, LetterLow)) {
+                    Random random = new Random();
+                    ParticleEffect.ENCHANTMENT_TABLE.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((LetterHigh - LetterLow) + LetterLow) + 1);
+                }
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Happy Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("happy")) {
+                if (!trailNegative(HappyHigh, HappyLow)) {
+                    Random random = new Random();
+                    ParticleEffect.HAPPY_VILLAGER.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((HappyHigh - HappyLow) + HappyLow) + 1);
+                }
+                
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Magic Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("magic")) {
+                if (!trailNegative(MagicHigh, MagicLow)) {
+                    Random random = new Random();
+                    ParticleEffect.MAGIC_CRIT.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1);
+                    ParticleEffect.WITCH_MAGIC.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((MagicHigh - MagicLow) + MagicLow) + 1);
+                }
+                
+            }
+
+//</editor-fold>     
+        //<editor-fold defaultstate="collapsed" desc=" Music Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("music")) {
+                if(!trailNegative(MusicHigh,MusicLow)){
+                Random random = new Random();
+                ParticleEffect.NOTE.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 1, random.nextInt((MusicHigh - MusicLow) + MusicLow) + 1);
+                }  
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Anger Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("anger")) {
+                if (!trailNegative(AngerHigh, AngerLow)) {
+                    Random random = new Random();
+                    ParticleEffect.ANGRY_VILLAGER.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((AngerHigh - AngerLow) + AngerLow) + 1);
+                }
+                
+            }
+
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc=" Cloud Trail ">
+            if (plugin.modelist.get(sender.getName()).contains("clouds")) {
+                if (!trailNegative(CloudHigh, CloudLow)) {
+                    Random random = new Random();
+                    ParticleEffect.CLOUD.display(sender.getLocation(), random.nextFloat(), random.nextFloat(), random.nextFloat(), 0, random.nextInt((CloudHigh - CloudLow) + CloudLow) + 1);
+                }
+                
+            }
+
+//</editor-fold>
+        
         }
     }
 
     public Boolean trailNegative(int max, int min) {
         return max - min <= 0;
     }
-
-    private Color getColor(int i) {
-        Color c = null;
-        if (i == 1) {
-            c = Color.AQUA;
-        }
-        if (i == 2) {
-            c = Color.BLACK;
-        }
-        if (i == 3) {
-            c = Color.BLUE;
-        }
-        if (i == 4) {
-            c = Color.FUCHSIA;
-        }
-        if (i == 5) {
-            c = Color.GRAY;
-        }
-        if (i == 6) {
-            c = Color.GREEN;
-        }
-        if (i == 7) {
-            c = Color.LIME;
-        }
-        if (i == 8) {
-            c = Color.MAROON;
-        }
-        if (i == 9) {
-            c = Color.NAVY;
-        }
-        if (i == 10) {
-            c = Color.OLIVE;
-        }
-        if (i == 11) {
-            c = Color.ORANGE;
-        }
-        if (i == 12) {
-            c = Color.PURPLE;
-        }
-        if (i == 13) {
-            c = Color.RED;
-        }
-        if (i == 14) {
-            c = Color.SILVER;
-        }
-        if (i == 15) {
-            c = Color.TEAL;
-        }
-        if (i == 16) {
-            c = Color.WHITE;
-        }
-        if (i == 17) {
-            c = Color.YELLOW;
-        }
-
-        return c;
     }
-}
