@@ -358,6 +358,9 @@ public class trail extends JavaPlugin {
         
         pl.CloudHigh = getConfig().getInt("TrailValues.HappyHigh");
         pl.CloudLow = getConfig().getInt("TrailValues.HappyLow");
+        
+        pl.MusicHigh = getConfig().getInt("TrailValues.MusicHigh");
+        pl.MusicLow = getConfig().getInt("TrailValues.MusicLow");
 
     }
    public void fixConfig(){

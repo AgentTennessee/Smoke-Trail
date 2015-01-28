@@ -48,7 +48,6 @@ public class traillistener
     public int FireLow;
     public int FireHigh;
     public int SmokeLow;
-    
     public int SmokeHigh;
     public int HeartLow;
     public int HeartHigh;
@@ -193,7 +192,7 @@ public class traillistener
         final Player sender = event.getPlayer();
         World world = sender.getWorld();
         
-        
+        if(plugin.modelist.containsKey(sender.getName())){
         //<editor-fold defaultstate="collapsed" desc=" Smoke Trail ">
             if (plugin.modelist.get(sender.getName()).contains("smoke")) {
                 if (!trailNegative(SmokeHigh, SmokeLow)) {
@@ -498,7 +497,7 @@ public class traillistener
             }
 
 //</editor-fold>
-        
+        }
         }
     }
 

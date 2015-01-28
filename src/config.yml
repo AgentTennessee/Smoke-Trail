@@ -31,8 +31,6 @@ TrailValues:
   MagicHigh: 7
   MusicHigh: 10
   MusicLow: 4
-  NotesLow: 4
-  NotesHigh: 8
   AngerHigh: 2
   AngerLow: 5
   CloudHigh: 5
