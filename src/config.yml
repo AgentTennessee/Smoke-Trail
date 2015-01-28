@@ -96,4 +96,4 @@ Messages:
   clouds:
     enabled: "&6[&cST&6] &fClouds &aTrail Enabled!"
     disabled: "&6[&cST&6] &fClouds &cTrail Disabled!"
-  off: "&6[&cST&6] &cTrail(s) disabled!"
+  DisableMessage: "&6[&cST&6] &cTrail(s) disabled!"
