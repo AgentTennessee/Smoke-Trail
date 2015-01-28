@@ -126,7 +126,7 @@ public class trail extends JavaPlugin {
                     player.sendMessage(ChatColor.RED + args[0] + " is not a real person");
                 } else {
                     switchTrails(player2.getName(), args[0]);
-                    player.sendMessage(ChatColor.GREEN + "Trail toggled for" + player2.getName());
+                    player.sendMessage(ChatColor.GREEN + "Trail toggled for " + player2.getName());
                 }
 
             } else {
